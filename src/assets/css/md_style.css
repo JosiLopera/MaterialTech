@@ -1,0 +1,51 @@
+/*----------- RIPPLE -----------------*/
+
+@-webkit-keyframes ripple_animation {
+     0% {
+         -webkit-transform: scale(.01);
+         transform: scale(.01);
+     }
+
+     100% {
+         -webkit-transform: scale(5);
+         transform: scale(5);
+     }
+ }
+
+@keyframes ripple_animation {
+    0% {
+        -webkit-transform: scale(.01);
+        transform: scale(.01);
+    }
+
+    100% {
+        -webkit-transform: scale(5);
+        transform: scale(5);
+    }
+}
+
+/*----------- MODAL -----------------*/
+
+@-webkit-keyframes modal_animation {
+    0% {
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@keyframes modal_animation {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}

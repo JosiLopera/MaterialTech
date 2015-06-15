@@ -1,0 +1,64 @@
+<div id="parametres">Parametres</div>
+<div id="controlBox">
+    <form>
+        <div class="itemMargin">
+            <div class="title_box">Select Layout:</div>
+            <div id="left" data="left" class="layout btn_select">Left</div>
+            <div id="right" data="right" class="layout btn_select">Right</div>
+            <div id="top" data="top" class="layout btn_select">Top</div>
+            <div id="bottom" data="bottom" class="layout btn_select">Bottom</div>
+            <div id="center" data="center" class="layout btn_select active">center</div>
+        </div>
+        <div class="itemMargin">
+            <div class="title_box">Color Background:</div>
+            <input  id="background" class="inputColor" type="color" value="#EE5757">
+        </div>
+        <div class="itemMargin">
+            <div class="title_box">Color Close:</div>
+            <input  id="closeColor" class="inputColor" type="color" value="#484d4d">
+        </div>
+        <div class="itemMargin">
+            <div class="title_box">First Animation</div>
+            <ul>
+               <li class="titleAniEasing">
+                   <span>easeOutBounce</span>
+                   <ul id="ani1" class="aniMenu" ></ul>
+               </li>
+            </ul>
+
+            <input id="speed1" class="inputs speedInputs" type="range" min="100" max="2000" step="100" value="500">
+            <span id="speedSet1">500</span>
+        </div>
+        <div class="itemMargin">
+            <div class="title_box">Second Animation</div>
+            <ul>
+               <li class="titleAniEasing">
+                   <span>easeOutBounce</span>
+                   <ul id="ani2" class="aniMenu" ></ul>
+               </li>
+            </ul>
+
+            <input id="speed2" class="inputs speedInputs" type="range" min="100" max="2000" step="100" value="1000">
+            <span id="speedSet2">1000</span>
+        </div>
+        <div class="itemMargin" id="thirdAni">
+            <div class="title_box">Third Animation</div>
+            <ul>
+               <li class="titleAniEasing">
+                   <span>easeOutBounce</span>
+                   <ul id="ani3" class="aniMenu" ></ul>
+               </li>
+            </ul>
+
+            <input id="speed3" class="inputs speedInputs" type="range" min="100" max="2000" step="100" value="2000">
+            <span id="speedSet3">2000</span>
+        </div>
+    </form>
+
+</div>
+
+<script>
+
+    md.modal.init();
+
+</script>
