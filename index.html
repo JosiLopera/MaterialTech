@@ -17,31 +17,51 @@
 
 	</head>
 	<body>
+		<div class="box_hover">
+			<div id="hover_content">
+				<div class="mInfo">
+					<i class="fa fa-pencil-square-o"></i>
+					<span>Personnalisez votre effet a l'aide des paramètres clefs </span>
+				</div>
+				<div class="mInfo">
+					<i class="fa fa-hand-o-up"></i>
+					<span>Cliquez sur les éléments pour tester</span>
+				</div>
+				<div class="mInfo">
+					<i class="fa fa-code"></i>
+					<span>Récupérez le code et intégrez-le dans votre site web</span>
+				</div>
+				<div class="mInfo" id="onyva">
+					<i class="fa fa-check"></i>
+					<span>On y va !</span>
+				</div>
+			</div>
+		</div>
 		<nav id="menu">
 			<div id="logo"></div>
 			<ul id="nav">
 				<li class="titleMenu">
-					<span id="started">Get Started</span>
+					<span id="intro" class="active">À propos</span>
 				</li>
 				<li class="titleMenu">
-					<span id="effects">Effects</span>
+					<span id="getStarted">Démarrer</span>
+				</li>
+				<li class="titleMenu">
+					<span id="effects">Effets</span>
 					<ul class="subMenu">
-						<li><span id="ripple">Ripple</span></li>
-						<li><span id="modal">Modal</span></li>
-						<li><span id="social">Social</span></li>
+						<li><span id="ripple" class="menu_item" data="off">Ripple</span></li>
+						<li><span id="modal" class="menu_item" data="off">Modal</span></li>
+						<li><span id="social" class="menu_item" data="off">Social</span></li>
 
 					</ul>
 				</li>
 			</ul>
 		</nav>
 		<div id="container">
-			<div id="header">
-				<h1>home</h1>
-			</div>
+
 		</div>
 		<div id="navRight"></div>
 
-		<footer></footer>
 	</body>
 
 
@@ -56,7 +76,6 @@
 
 	<script>
 		md.init();
-
 
 	</script>
 

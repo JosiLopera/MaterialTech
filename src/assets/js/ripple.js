@@ -73,10 +73,13 @@
             "borderStyle": undefined
 
         },
+        
+        tRipple: ".ripple",
+        val:"",
 
         init: function(){
 
-            $(".ripple").ripple(self.basic);
+            $($(self.tRipple)).mt_ripple(self.basic);
 
             this.ui();
             this.setLayout();
@@ -94,12 +97,6 @@
 
         ui: function(){
 
-            $(document).ready(function(){
-                $("#navRight").animate({width: 20+'%'}, 800, 'easeOutBack');
-                $(this).attr('state','on');
-                $("#container").animate({width: 65+'%'}, 800, 'easeOutBack');
-            });
-
             $("#show_code").on('click', function(event){
                 event.preventDefault();
                 if(event.target.className.split(" ")[0] != "tCode"){
@@ -116,12 +113,39 @@
 
         setLayout: function(){
             $(".layout").on('click', function(){
-                $(".ripple").off();
+                $(self.tRipple).off();
                 $(".layout").removeClass('active');
                 $(this).addClass('active');
-                var val = $(this).attr('data');
-                self.setRipple.layout = val;
+                self.val = $(this).attr('data');
+                self.setRipple.layout = self.val;
+
+                console.log(self.val);
+
+
+                
                 $("#limit").removeClass('active').attr('data', 'off').html('No');
+                $(".style").removeClass('active');
+                $("#solid").addClass('active');
+                $(".action").removeClass('active');
+                $("#click").addClass('active');
+                $("#color").val(self[self.val].color);
+                $("#speed").val(self[self.val].speed);
+                $("#speedSet").html(self[self.val].speed);
+                $("#opacity").val(self[self.val].opacity);
+                $("#opacitySet").html(self[self.val].opacity);
+                $("#border").val(self[self.val].border);
+                $("#borderSet").html(self[self.val].border);
+                $("#delay").val(self[self.val].delay);
+                $("#delaySet").html(self[self.val].delay);
+                $("#time").val(self[self.val].time);
+                $("#timeSet").html(self[self.val].time);
+                $(self.tRipple).mt_ripple(self.setRipple);
+                console.log(self.setRipple);
+
+                if(self.val == "watter"){
+                    $(".style").removeClass('active');
+                    $("#double").addClass('active');
+                }
 
                 var code = self.setRipple;
                 for (var prop in code) {
@@ -131,199 +155,121 @@
                             console.log(prop);
                         }
                     }
-                };
-
-                if(val == "basic"){
-                    $(".ripple").off();
-                    $(".style").removeClass('active');
-                    $("#solid").addClass('active');
-                    $(".action").removeClass('active');
-                    $("#click").addClass('active');
-                    $("#color").val(self.basic.color);
-                    $("#speed").val(self.basic.speed);
-                    $("#speedSet").html(self.basic.speed);
-                    $("#opacity").val(self.basic.opacity);
-                    $("#opacitySet").html(self.basic.opacity);
-                    $("#border").val(self.basic.border);
-                    $("#borderSet").html(self.basic.border);
-                    $("#delay").val(self.basic.delay);
-                    $("#delaySet").html(self.basic.delay);
-                    $("#time").val(self.basic.time);
-                    $("#timeSet").html(self.basic.time);
-                    $(".ripple").ripple(self.setRipple);
-                    console.log(self.setRipple);
-                }else if(val == "watter"){
-                    $(".ripple").off();
-                    $(".style").removeClass('active');
-                    $("#solid").addClass('active');
-                    $(".action").removeClass('active');
-                    $("#click").addClass('active');
-                    $("#color").val(self.watter.color);
-                    $("#speed").val(self.watter.speed);
-                    $("#speedSet").html(self.watter.speed);
-                    $("#opacity").val(self.watter.opacity);
-                    $("#opacitySet").html(self.watter.opacity);
-                    $("#border").val(self.watter.border);
-                    $("#borderSet").html(self.watter.border);
-                    $("#delay").val(self.watter.delay);
-                    $("#delaySet").html(self.watter.delay);
-                    $("#time").val(self.watter.time);
-                    $("#timeSet").html(self.watter.time);
-                    $(".ripple").ripple(self.setRipple);
-                    console.log(self.setRipple);
-                }else if(val == "light"){
-                    $(".ripple").off();
-                    $(".style").removeClass('active');
-                    $("#solid").addClass('active');
-                    $(".action").removeClass('active');
-                    $("#click").addClass('active');
-                    $("#color").val(self.light.color);
-                    $("#speed").val(self.light.speed);
-                    $("#speedSet").html(self.light.speed);
-                    $("#opacity").val(self.light.opacity);
-                    $("#opacitySet").html(self.light.opacity);
-                    $("#border").val(self.light.border);
-                    $("#borderSet").html(self.light.border);
-                    $("#delay").val(self.light.delay);
-                    $("#delaySet").html(self.light.delay);
-                    $("#time").val(self.light.time);
-                    $("#timeSet").html(self.light.time);
-                    $(".ripple").ripple(self.setRipple);
-                    console.log(self.setRipple);
-                }else if(val == "strong"){
-                    $(".ripple").off();
-                    $(".style").removeClass('active');
-                    $("#solid").addClass('active');
-                    $(".action").removeClass('active');
-                    $("#click").addClass('active');
-                    $("#color").val(self.strong.color);
-                    $("#speed").val(self.strong.speed);
-                    $("#speedSet").html(self.strong.speed);
-                    $("#opacity").val(self.strong.opacity);
-                    $("#opacitySet").html(self.strong.opacity);
-                    $("#border").val(self.strong.border);
-                    $("#borderSet").html(self.strong.border);
-                    $("#delay").val(self.strong.delay);
-                    $("#delaySet").html(self.strong.delay);
-                    $("#time").val(self.strong.time);
-                    $("#timeSet").html(self.strong.time);
-                    $(".ripple").ripple(self.setRipple);
-                    console.log(self.setRipple);
                 }
             });
         },
 
         setStyle: function(){
             $(".style").on('click', function(){
-                $(".ripple").off();
+                $(self.tRipple).off();
                 $(".style").removeClass('active');
                 $(this).addClass('active');
-                var val = $(this).attr('data');
-                self.setRipple.style = val;
-                $(".ripple").ripple(self.setRipple);
+                self.val = $(this).attr('data');
+                self.setRipple.style = self.val;
+                $(self.tRipple).mt_ripple(self.setRipple);
 
             });
         },
 
         setAction: function(){
             $(".action").on('click', function(){
-                $(".ripple").off();
+                $(self.tRipple).off();
                 $(".action").removeClass('active');
                 $(this).addClass('active');
-                var val = $(this).attr('data');
-                self.setRipple.action = val;
-                $(".ripple").ripple(self.setRipple);
-                console.log(val);
+                self.val = $(this).attr('data');
+                self.setRipple.action = self.val;
+                $(self.tRipple).mt_ripple(self.setRipple);
+                console.log(self.val);
             });
         },
 
         setColor: function(){
             $("#color").change(function(){
-                $(".ripple").off();
-                var val = $(this).val();
-                self.setRipple.color = val;
-                $(".ripple").ripple(self.setRipple);
-                console.log(val);
+                $(self.tRipple).off();
+                self.val = $(this).val();
+                self.setRipple.color = self.val;
+                $(self.tRipple).mt_ripple(self.setRipple);
+                console.log(self.val);
 
             });
         },
 
         setOpacity: function(){
             $("#opacity").change(function(){
-                $(".ripple").off();
-                var val = $(this).val();
-                self.setRipple.opacity = val;
-                $("#opacitySet").html(val);
-                $(".ripple").ripple(self.setRipple);
-                console.log(val);
+                $(self.tRipple).off();
+                self.val = $(this).val();
+                self.setRipple.opacity = self.val;
+                $("#opacitySet").html(self.val);
+                $(self.tRipple).mt_ripple(self.setRipple);
+                console.log(self.val);
             });
         },
 
         setBorder: function(){
             $("#border").change(function(){
-                $(".ripple").off();
-                var val = $(this).val();
-                self.setRipple.border = val;
-                $("#borderSet").html(val);
-                $(".ripple").ripple(self.setRipple);
-                console.log(val);
+                $(self.tRipple).off();
+                self.val = $(this).val();
+                self.setRipple.border = self.val;
+                $("#borderSet").html(self.val);
+                $(self.tRipple).mt_ripple(self.setRipple);
+                console.log(self.val);
             });
 
             $(".bStyle").on('click', function(){
-                $(".ripple").off();
+                $(self.tRipple).off();
                 $(".bStyle").removeClass('active');
                 $(this).addClass('active');
-                var val = $(this).attr('data');
-                self.setRipple.borderStyle = val;
-                $(".ripple").ripple(self.setRipple);
+                self.val = $(this).attr('data');
+                self.setRipple.borderStyle = self.val;
+                $(self.tRipple).mt_ripple(self.setRipple);
 
             });
         },
 
         setSpeed: function(){
             $("#speed").change(function(){
-                $(".ripple").off();
-                var val = $(this).val();
-                self.setRipple.speed = val;
-                $("#speedSet").html(val);
-                $(".ripple").ripple(self.setRipple);
-                console.log(val);
+                $(self.tRipple).off();
+                self.val = $(this).val();
+                self.setRipple.speed = self.val;
+                $("#speedSet").html(self.val);
+                $(self.tRipple).mt_ripple(self.setRipple);
+                console.log(self.val);
             });
         },
 
         setDelay: function(){
             $("#delay").change(function(){
-                $(".ripple").off();
-                var val = $(this).val();
-                self.setRipple.delay = val;
-                $("#delaySet").html(val);
-                $(".ripple").ripple(self.setRipple);
-                console.log(val);
+                $(self.tRipple).off();
+                self.val = $(this).val();
+                self.setRipple.delay = self.val;
+                $("#delaySet").html(self.val);
+                $(self.tRipple).mt_ripple(self.setRipple);
+                console.log(self.val);
             });
         },
 
         setTime: function(){
             $("#time").change(function(){
-                $(".ripple").off();
-                var val = $(this).val();
-                self.setRipple.time = val;
-                $("#timeSet").html(val);
-                $(".ripple").ripple(self.setRipple);
-                console.log(val);
+                $(self.tRipple).off();
+                self.val = $(this).val();
+                self.setRipple.time = self.val;
+                $("#timeSet").html(self.val);
+                $(self.tRipple).mt_ripple(self.setRipple);
+                console.log(self.val);
             });
         },
 
         setLimit: function(){
             $("#limit").on('click', function(){
-                $(".ripple").off();
+                $(self.tRipple).off();
                 if($("#limit").attr('data')=='off'){
                     self.setRipple.limit = ".btn_circle_box";
                     $(this).html('Yes').addClass('active').attr('data', 'on');
-                    $(".ripple").ripple(self.setRipple);
+                    $(self.tRipple).mt_ripple(self.setRipple);
                 }else{
                     self.setRipple.limit = undefined;
                     $(this).html('No').removeClass('active').attr('data', 'off');
-                    $(".ripple").ripple(self.setRipple);
+                    $(self.tRipple).mt_ripple(self.setRipple);
 
                 }
             });
@@ -338,9 +284,9 @@
             $(".layout").on('click', function(){
                 var valText = $(this).attr('data');
                 if(valText == "basic"){
-                    $("#showCodebox").html("$(my_target).ripple({});");
+                    $("#showCodebox").html("$(my_target).mt_ripple({});");
                 }else{
-                    $("#showCodebox").html('$(my_target).ripple({<br>"layout":"'+valText+'"});');
+                    $("#showCodebox").html('$(my_target).mt_ripple({<br>"layout":"'+valText+'"});');
                 }
             });
 

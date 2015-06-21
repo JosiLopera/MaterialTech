@@ -120,10 +120,11 @@
         elemBackground: null,
         elemRadius: null,
         m_dom: "",
+        toggle: "off",
 
         init: function(){
 
-            $(".modal").modal(self.center);
+            $(".modal").mt_modal(self.center);
 
             this.ui();
             this.elemDom();
@@ -139,9 +140,6 @@
 
         ui: function(){
             $(document).ready(function(){
-                $("#navRight").animate({width: 20+'%'}, 800, 'easeOutBack');
-                $(this).attr('state','on');
-                $("#container").animate({width: 65+'%'}, 800, 'easeOutBack');
                 var html = "";
                 for (var i = 0; i < self.easing.length; i++) {
                     html = "<li class='elemEasing' data-easing='"+self.easing[i]+"'>"+self.easing[i]+"</li>";
@@ -149,7 +147,6 @@
                 }
 
             });
-
 
 
             $(".titleAniEasing").on('mouseenter', function(){
@@ -181,48 +178,53 @@
         elemDom: function(){
 
             $(".modal").on('click', function(e){
-
-                if(e.target.className.split(" ")[0] != "splitClass") {
-                    $(this).addClass('mAct');
-
-                    console.log('mAct');
-
-                    self.m_dom = $(this);
-
-                    self.elemPosition = $(this).position();
-                    self.elemWidth = $(this).width();
-                    self.elemHeight = $(this).height();
-                    self.elemBackground = $(this).css('backgroundColor');
-                    self.elemRadius = $(this).css('border-radius');
-
-                    console.log('pos:' + self.elemPosition);
-                    console.log('width :' + self.elemWidth);
-                    console.log('height :' + self.elemHeight);
-                    console.log('color :' + self.elemBackground);
+                $(".modal").addClass('hidden');
+                $(this).removeClass('hidden');
+                if (e.target.className.split(" ")[0] != "splitClass") {
+                    if (self.toggle == 'off') {
+                        self.toggle = "on";
+                        console.log(self.toggle);
+                        self.m_dom = $(this);
+                        alert('hey');
+                        console.log(self.m_dom);
+                        self.elemPosition = self.m_dom.position();
+                        self.elemWidth = self.m_dom.width();
+                        self.elemHeight = self.m_dom.height();
+                        self.elemBackground = self.m_dom.css('backgroundColor');
+                        self.elemRadius = self.m_dom.css('border-radius');
+                    }
                 }
+
+            });
+
+            $("#close").on('click', function(){
+                self.toggle = "off";
+                console.log(self.toggle);
+                $(".modal").removeClass('hidden');
             });
 
         },
 
         closeAni: function(){
+            console.log(self.toggle);
 
-            var t = self.m_dom.id;
+            $(".modal").removeClass('hidden');
 
-            console.log(t);
+            if(self.toggle == "on"){
+                $("#close").remove();
+                self.toggle = "off";
+                console.log(self.m_dom);
 
-            $("#close").remove();
-
-            $('.mAct').animate({
-                width : self.elemWidth,
-                height : self.elemHeight,
-                left : self.elemPosition.left,
-                top : self.elemPosition.top,
-                'border-radius' : self.elemRadius
-            }, 500, 'easeOutCirc',
-                function(){
-                    $(".modal").removeClass('mAct');
-                }
-            ).css({'backgroundColor': self.elemBackground});
+                $(self.m_dom).animate({
+                        'width' : self.elemWidth,
+                        'height' : self.elemHeight,
+                        'left' : self.elemPosition.left,
+                        'top' : self.elemPosition.top,
+                        'border-radius' : self.elemRadius
+                    }, 500, 'easeOutCirc'
+                ).css({'backgroundColor': self.elemBackground});
+                console.log(self.toggle);
+            }
 
         },
 
@@ -233,113 +235,36 @@
                 $(this).addClass('active');
                 var val = $(this).attr('data');
                 self.setModal.layout = val;
-                //$("#limit").removeClass('active').attr('data', 'off').html('No');
+
+                $("#thirdAni").fadeIn('fast');
+                $("#background").val(self[val].finalBackground);
+                $("#closeColor").val(self[val].closeColor);
+                $("#ani1").prev("span").html(self[val].animation1);
+                $("#speed1").val(self[val].speed1);
+                $("#speedSet1").html(self[val].speed1);
+                $("#ani2").prev("span").html(self[val].animation2);
+                $("#speed2").val(self[val].speed2);
+                $("#speedSet2").html(self[val].speed2);
+                $("#ani3").prev("span").html(self[val].animation3);
+                $("#speed3").val(self[val].speed3);
+                $("#speedSet3").html(self[val].speed3);
+                $(".modal").mt_modal(self.setModal);
+                console.log(self.setModal);
 
                 self.closeAni();
 
-                console.log(self.setModal.layout);
 
                 var code = self.setModal;
                 for (var prop in code) {
                     if(code.hasOwnProperty(prop)) {
                         if(prop !== "layout") {
                             code[prop] = undefined;
-                            console.log(prop);
+
                         }
                     }
                 };
 
-                if(val == "center"){
-                    $(".modal").off();
-                    $("#thirdAni").fadeIn('fast');
-                    $("#background").val(self.center.finalBackground);
-                    $("#closeColor").val(self.center.closeColor);
-                    $("#ani1").prev("span").html(self.center.animation1);
-                    $("#speed1").val(self.center.speed1);
-                    $("#speedSet1").html(self.center.speed1);
-                    $("#ani2").prev("span").html(self.center.animation2);
-                    $("#speed2").val(self.center.speed2);
-                    $("#speedSet2").html(self.center.speed2);
-                    $("#ani3").prev("span").html(self.center.animation3);
-                    $("#speed3").val(self.center.speed3);
-                    $("#speedSet3").html(self.center.speed3);
 
-
-                    $(".modal").modal(self.setModal);
-                    console.log(self.setModal);
-
-
-                }else if(val == "left"){
-                    $(".modal").off();
-                    $("#thirdAni").fadeOut('fast');
-
-                    $("#background").val(self.left.finalBackground);
-                    $("#closeColor").val(self.left.closeColor);
-
-                    $("#ani1").prev("span").html(self.left.animation1);
-                    $("#speed1").val(self.left.speed1);
-                    $("#speedSet1").html(self.left.speed1);
-                    $("#ani2").prev("span").html(self.left.animation2);
-                    $("#speed2").val(self.left.speed2);
-                    $("#speedSet2").html(self.left.speed2);
-
-                    $(".modal").modal(self.setModal);
-                    console.log(self.setModal);
-
-                }else if(val == "top"){
-                    $(".modal").off();
-                    $("#thirdAni").fadeOut('fast');
-
-                    $("#background").val(self.top.finalBackground);
-                    $("#closeColor").val(self.top.closeColor);
-
-                    $("#ani1").prev("span").html(self.top.animation1);
-                    $("#speed1").val(self.top.speed1);
-                    $("#speedSet1").html(self.top.speed1);
-                    $("#ani2").prev("span").html(self.top.animation2);
-                    $("#speed2").val(self.top.speed2);
-                    $("#speedSet2").html(self.top.speed2);
-
-                    $(".modal").modal(self.setModal);
-                    console.log(self.setModal);
-
-                }else if(val == "right"){
-                    $(".modal").off();
-                    $("#thirdAni").fadeOut('fast');
-
-                    $("#background").val(self.right.finalBackground);
-                    $("#closeColor").val(self.right.closeColor);
-
-                    $("#ani1").prev("span").html(self.right.animation1);
-                    $("#speed1").val(self.right.speed1);
-                    $("#speedSet1").html(self.right.speed1);
-                    $("#ani2").prev("span").html(self.right.animation2);
-                    $("#speed2").val(self.right.speed2);
-                    $("#speedSet2").html(self.right.speed2);
-
-
-
-                    $(".modal").modal(self.setModal);
-                    console.log(self.setModal);
-
-                }else if(val == "bottom"){
-                    $(".modal").off();
-                    $("#thirdAni").fadeOut('fast');
-
-                    $("#background").val(self.bottom.finalBackground);
-                    $("#closeColor").val(self.bottom.closeColor);
-
-                    $("#ani1").prev("span").html(self.bottom.animation1);
-                    $("#speed1").val(self.bottom.speed1);
-                    $("#speedSet1").html(self.bottom.speed1);
-                    $("#ani2").prev("span").html(self.bottom.animation2);
-                    $("#speed2").val(self.bottom.speed2);
-                    $("#speedSet2").html(self.bottom.speed2);
-
-                    $(".modal").modal(self.setModal);
-                    console.log(self.setModal);
-
-                };
             });
         },
 
@@ -349,7 +274,7 @@
                 self.closeAni();
                 var val = $(this).val();
                 self.setModal.finalBackground = val;
-                $(".modal").modal(self.setModal);
+                $(".modal").mt_modal(self.setModal);
                 console.log(val);
                 console.log(self.setModal);
 
@@ -362,7 +287,7 @@
                 self.closeAni();
                 var val = $(this).val();
                 self.setModal.closeColor = val;
-                $(".modal").modal(self.setModal);
+                $(".modal").mt_modal(self.setModal);
                 console.log(val);
                 console.log(self.setModal);
             });
@@ -376,26 +301,24 @@
                     pSpan;
 
                 $(".modal").off();
+
                 self.closeAni();
 
                 if(parentId == "ani1"){
-
                     self.setModal.animation1 = val;
                     pSpan = $(this).parent().parent().find("span");
                     pSpan.html(val);
-                    $(".modal").modal(self.setModal);
+                    $(".modal").mt_modal(self.setModal);
                 }else if(parentId == "ani2"){
-
                     self.setModal.animation2 = val;
                     pSpan = $(this).parent().parent().find("span");
                     pSpan.html(val);
-                    $(".modal").modal(self.setModal);
+                    $(".modal").mt_modal(self.setModal);
                 }else if(parentId == "ani3"){
-
                     self.setModal.animation3 = val;
                     pSpan = $(this).parent().parent().find("span");
                     pSpan.html(val);
-                    $(".modal").modal(self.setModal);
+                    $(".modal").mt_modal(self.setModal);
                 }
 
                 parent.fadeOut("fast");
@@ -415,7 +338,7 @@
                 var val = $(this).val();
                 self.setModal.speed1 = val;
                 $("#speedSet1").html(val);
-                $(".modal").modal(self.setModal);
+                $(".modal").mt_modal(self.setModal);
                 console.log(val);
                 console.log(self.setModal);
 
@@ -429,7 +352,7 @@
                 var val = $(this).val();
                 self.setModal.speed2 = val;
                 $("#speedSet2").html(val);
-                $(".modal").modal(self.setModal);
+                $(".modal").mt_modal(self.setModal);
                 console.log(val);
                 console.log(self.setModal);
 
@@ -443,7 +366,7 @@
                 var val = $(this).val();
                 self.setModal.speed3 = val;
                 $("#speedSet3").html(val);
-                $(".modal").modal(self.setModal);
+                $(".modal").mt_modal(self.setModal);
                 console.log(val);
             });
         },
@@ -457,9 +380,9 @@
             $(".layout").on('click', function(){
                 var valText = $(this).attr('data');
                 if(valText == "center"){
-                    $("#showCodebox").html("$(my_target).modal({});");
+                    $("#showCodebox").html("$(my_target).mt_modal({});");
                 }else{
-                    $("#showCodebox").html('$(my_target).modal({<br>"layout":"'+valText+'"});');
+                    $("#showCodebox").html('$(my_target).mt_modal({<br>"layout":"'+valText+'"});');
                 }
             });
 

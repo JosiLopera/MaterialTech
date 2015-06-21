@@ -4,10 +4,11 @@
 
         textRipple:"",
         textModal:"",
+        textSocial:"",
 
         getCodeRipple: function(){
             var code = md.ripple.setRipple,
-                textStart = "$(my_target).ripple({</br>",
+                textStart = "$(my_target).mt_ripple({</br>",
                 textEnd = "});",
                 re = /".btn_circle_box"/gi,
                 result = [];
@@ -36,7 +37,7 @@
 
         getCodeModal: function(){
             var code = md.modal.setModal,
-                textStart = "$(my_target).modal({</br>",
+                textStart = "$(my_target).mt_modal({</br>",
                 textEnd = "});",
                 //re = /"#container"/gi,
                 result = [];
@@ -66,7 +67,35 @@
             //self.textModal = self.textModal.replace(re,"undefined");
             self.textModal += textEnd;
 
-        }
+        },
+
+        getCodeSocial: function(){
+            var code = md.social.setSocial,
+                textStart = "$(my_target).mt_social({</br>",
+                textEnd = "});",
+                result = [];
+
+            console.log(code);
+            for (var prop in code) {
+                if(code.hasOwnProperty(prop)) {
+
+                    if(code[prop] !== undefined) {
+                        var props = '"' +prop+ '": "'+ code[prop]+'"';
+                        result.push(props);
+                    }
+                }
+            }
+
+            for (var i = 0; i < result.length; i++) {
+                textStart += result[i]+",<br>";
+            };
+
+            console.log(textStart);
+            self.textSocial = "";
+            self.textSocial += textStart.substring(0, textStart.length -5);
+            self.textSocial += textEnd;
+
+        },
 
 
     };

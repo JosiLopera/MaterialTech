@@ -1,0 +1,773 @@
+<div id="header">
+    <h1>Effects</h1>
+</div>
+
+<section id="secRipple" class="secEffects">
+    <h2>Ripple</h2>
+    <p>
+        Notre effet “Ripple” permet de dynamiser l'apparence et l’importance des boutons lorsque ils sont sélectionnes ou survoles, permettant ainsi que certains éléments  soient plus attirants que d’autres.
+
+    </p>
+
+
+    <p>Pour utiliser “Rippel” on initialise la librairie de cette manière.</p>
+
+    <xmp class="code_xpm">
+        $(my_target).mt_ripple();
+    </xmp>
+
+    <h3>Paramètres</h3>
+    <h4><i class="fa fa-pencil-square-o"></i> Action</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+            <ul class="opList">
+                <li>"click"</li>
+                <li>"hover"</li>
+            </ul>
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Limit</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+            <ul class="opList">
+                <li>undefined (laissez vide)</li>
+                <li>Selector jQuery (“$(my_target)”).</li>
+            </ul>
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Color</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+            Valeur de type Hex ("#000000").
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Speed</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Valeur numérique.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+            Valeur numérique en millisecondes (10, 100, 1000).
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Border</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Valeur numérique.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+            Valeur numérique (40, 100, 250).
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Opacity</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Valeur numérique.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+            Valeur numérique de 0.1 à 1 (0.2, 0.9).
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Layout</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+        <ul class="opList">
+            <li>"basic"</li>
+            <li>“watter”</li>
+            <li>“light”</li>
+            <li>“strong”</li>
+        </ul>
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Style</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+        <ul class="opList">
+            <li>"solid"</li>
+            <li>“single”</li>
+            <li>“double”</li>
+            <li>“mixed”</li>
+        </ul>
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Delay</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Valeur numérique.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+            Valeur numérique en millisecondes (10, 100, 1000).
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Time</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Valeur numérique.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+            Valeur numérique en millisecondes (10, 100, 1000).
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> BorderStyle</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+        <ul class="opList">
+            <li>"solid"</li>
+            <li>“dotted”</li>
+        </ul>
+
+        </p>
+    </div>
+
+</section>
+
+<section id="secModal" class="secEffects">
+    <h2>Modal</h2>
+    <p>
+        Notre effet “Modal” propose des transitions dynamiques à partir d’un  bouton spécifique  lequel devienne une carte d’affichage soit de texte ou d’image, cela  s’imposent comme une masque de contenue pour avoir une regarde aigu  sur l’annonce. Tels que  Menus- Panneau  d’achats- Actualités- Notifications- Barre de recherche- Conditions d’usage, etc.
+    </p>
+
+    <p>Pour utiliser “Modal” on initialise la librairie de cette manière.</p>
+
+    <xmp class="code_xpm">
+        $(my_target).mt_modal();
+    </xmp>
+
+    <h3>Paramètres</h3>
+    <h4><i class="fa fa-pencil-square-o"></i> Speed1</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Valeur numérique.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+            Valeur numérique en millisecondes (10, 100, 1000).
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Speed2</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Valeur numérique.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+            Valeur numérique en millisecondes (10, 100, 1000).
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Speed3</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Valeur numérique.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+            Valeur numérique en millisecondes (10, 100, 1000).
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Animation1</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+        <ul class="opList">
+            <li>"linear"</li>
+            <li>“easeInSine”</li>
+            <li>“easeOutSine”</li>
+            <li>“easeInBack”</li>
+            <li>“easeOutBack”</li>
+            <li>“easeInElastic”</li>
+            <li>“easeOutElastic”</li>
+            <li>“easeInBounce”</li>
+            <li>“easeOutBounce”</li>
+        </ul>
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Animation2</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+        <ul class="opList">
+            <li>"linear"</li>
+            <li>“easeInSine”</li>
+            <li>“easeOutSine”</li>
+            <li>“easeInBack”</li>
+            <li>“easeOutBack”</li>
+            <li>“easeInElastic”</li>
+            <li>“easeOutElastic”</li>
+            <li>“easeInBounce”</li>
+            <li>“easeOutBounce”</li>
+        </ul>
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Animation3</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+        <ul class="opList">
+            <li>"linear"</li>
+            <li>“easeInSine”</li>
+            <li>“easeOutSine”</li>
+            <li>“easeInBack”</li>
+            <li>“easeOutBack”</li>
+            <li>“easeInElastic”</li>
+            <li>“easeOutElastic”</li>
+            <li>“easeInBounce”</li>
+            <li>“easeOutBounce”</li>
+        </ul>
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> zIndex</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Valeur numérique.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+            Valeur numérique (1, 100, 1000).
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Layout</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+        <ul class="opList">
+            <li>"center"</li>
+            <li>"left"</li>
+            <li>“right”</li>
+            <li>“top”</li>
+            <li>“bottom”</li>
+        </ul>
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Container</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+        <ul class="opList">
+            <li>undefined (laissez vide)</li>
+            <li>Selector jQuery (“$(my_containert)”).</li>
+        </ul>
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> CloseColor</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+            Valeur de type Hex ("#000000").
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> CloseSize</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Valeur numérique.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+            Valeur numérique (40, 100, 250).
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> SplitClass</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+        <ul class="opList">
+            <li>undefined (laissez vide) </li>
+            <li>"splitClass"</li>
+        </ul>
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> FinalBackground</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+        <ul class="opList">
+            <li>undefined (laissez vide) </li>
+            <li>Valeur de type Hex ("#000000").</li>
+        </ul>
+        </p>
+    </div>
+
+</section>
+
+<section id="secSocial" class="secEffects">
+    <h2>Social</h2>
+    <p>Notre effet “Social” Est un utile qui permet de afficher de manière versatile , le groupe de boutons identifiants  de principaux réseaux  sociaux, cet effet est conçu pour être modifiable à différents formats selon les besoins des utilisateur,  mais en conservant toujours le principe de Material Dessing.</p>
+
+    <p>Pour utiliser “Social” on initialise la librairie de cette manière.</p>
+    <h3>Paramètres</h3>
+    <h4><i class="fa fa-pencil-square-o"></i> AnimationIn</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+        <ul class="opList">
+            <li>"linear"</li>
+            <li>“easeOutSine”</li>
+            <li>“easeOutBack”</li>
+            <li>“easeOutElastic”</li>
+            <li>“easeOutBounce”</li>
+        </ul>
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> AnimationOut</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+        <ul class="opList">
+            <li>"linear"</li>
+            <li>“easeOutSine”</li>
+            <li>“easeOutBack”</li>
+            <li>“easeOutElastic”</li>
+            <li>“easeOutBounce”</li>
+        </ul>
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Layout</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+        <ul class="opList">
+            <li>"left"</li>
+            <li>“right”</li>
+            <li>“top”</li>
+            <li>“bottom”</li>
+        </ul>
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> FontSize</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Valeur numérique.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+            <ul class="opList">
+                <li>undefined (laissez vide).</li>
+                <li>Valeur numérique (1, 100, 1000).</li>
+            </ul>
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Facebook</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+        <ul class="opList">
+            <li>"yes"</li>
+            <li>“no”</li>
+        </ul>
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Facebook_link</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+        <ul class="opList">
+            <li>"Pas de valeur (laissez vide)"</li>
+            <li>“https://www.facebook.com/OXIL09”</li>
+        </ul>
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Twitter</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+        <ul class="opList">
+            <li>"yes"</li>
+            <li>“no”</li>
+        </ul>
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Twitter_link</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+        <ul class="opList">
+            <li>"Pas de valeur (laissez vide)"</li>
+            <li>“https://www.twitter.com/OXIL09”</li>
+        </ul>
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Gplus</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+        <ul class="opList">
+            <li>"yes"</li>
+            <li>“no”</li>
+        </ul>
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Gplus_link</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+        <ul class="opList">
+            <li>"Pas de valeur (laissez vide)"</li>
+            <li>“https://www.gplus.com/OXIL09”</li>
+        </ul>
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Linkedin</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+        <ul class="opList">
+            <li>"yes"</li>
+            <li>“no”</li>
+        </ul>
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Linkedin_link</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+        <ul class="opList">
+            <li>"Pas de valeur (laissez vide)"</li>
+            <li>“https://www.linkedin.com/OXIL09”</li>
+        </ul>
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Github</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+        <ul class="opList">
+            <li>"yes"</li>
+            <li>“no”</li>
+        </ul>
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Github_link</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+        <ul class="opList">
+            <li>"Pas de valeur (laissez vide)"</li>
+            <li>“https://www.github.com/OXIL09”</li>
+        </ul>
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> SpeedIn</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Valeur numérique.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+            Valeur numérique en millisecondes (10, 100, 1000).
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> SpeedOut</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Valeur numérique.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+            Valeur numérique en millisecondes (10, 100, 1000).
+
+        </p>
+    </div>
+    <h4><i class="fa fa-pencil-square-o"></i> Background</h4>
+    <div class="body_param">
+        <p>
+            <span class="strong">Définition:</span>
+        </p>
+        <p>
+            <span class="strong">Type:</span>
+            Chaîne de caractères.
+        </p>
+        <p>
+            <span class="strong">Options:</span>
+        <ul class="opList">
+            <li>"yes"</li>
+            <li>“no”</li>
+        </ul>
+
+        </p>
+    </div>
+
+
+</section>

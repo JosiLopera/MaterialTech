@@ -1,4 +1,4 @@
-<div id="parametres">Parametres</div>
+<div id="parametres">Panel de Contrôle</div>
 <div id="controlBox">
     <form>
         <div class="itemMargin">
@@ -6,8 +6,56 @@
             <div id="left" data="left" class="layout btn_select">Left</div>
             <div id="right" data="right" class="layout btn_select">Right</div>
             <div id="top" data="top" class="layout btn_select">Top</div>
-            <div id="bottom" data="bottom" class="layout btn_select">Bottom</div>
+            <div id="bottom" data="bottom" class="layout btn_select active">Bottom</div>
+        </div>
 
+        <div class="itemMargin">
+            <div class="title_box">Set button:</div>
+            <div id="btn-facebook-menu" class="btn_social_menu active" data="yes">
+                <i class="fa fa-facebook" ></i>
+            </div>
+            <div id="btn-twitter-menu" class="btn_social_menu active" data="yes">
+                <i class="fa fa-twitter" ></i>
+            </div>
+            <div id="btn-gplus-menu" class="btn_social_menu active" data="yes">
+                <i class="fa fa-google" ></i>
+            </div>
+            <div id="btn-linkedin-menu" class="btn_social_menu" data="no">
+                <i class="fa fa-linkedin" ></i>
+            </div>
+            <div id="btn-github-menu" class="btn_social_menu" data="no">
+                <i class="fa fa-github" ></i>
+            </div>
+        </div>
+
+        <div class="itemMargin">
+            <div class="title_box">Animation In</div>
+                <ul>
+                    <li class="titleAniEasing">
+                        <span>easeInSine</span>
+                        <ul id="aniIn" class="aniMenu" ></ul>
+                    </li>
+                </ul>
+
+                <input id="speedIn" class="inputs speedInputs" type="range" min="100" max="2000" step="100" value="500">
+                <span id="speedSetIn">500</span>
+            </div>
+        <div class="itemMargin">
+            <div class="title_box">Animation Out</div>
+                <ul>
+                    <li class="titleAniEasing">
+                        <span>easeOutSine</span>
+                        <ul id="aniOut" class="aniMenu" ></ul>
+                    </li>
+                </ul>
+
+                <input id="speedOut" class="inputs speedInputs" type="range" min="100" max="2000" step="100" value="200">
+                <span id="speedSetOut">200</span>
+            </div>
+
+        <div class="itemMargin">
+            <div class="title_box">Background:</div>
+            <div id="background" data="yes" class="background btn_select active">Yes</div>
         </div>
 
     </form>
