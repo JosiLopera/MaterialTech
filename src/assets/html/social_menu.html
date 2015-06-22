@@ -9,29 +9,56 @@
             <div id="bottom" data="bottom" class="layout btn_select active">Bottom</div>
         </div>
 
+
+        <div class="title_box">Set button:</div>
         <div class="itemMargin">
-            <div class="title_box">Set button:</div>
-            <div id="btn-facebook-menu" class="btn_social_menu active" data="yes">
+            <div id="btn-facebook-menu" class="btn_social_menu active" data="yes" data-name="facebook">
                 <i class="fa fa-facebook" ></i>
             </div>
-            <div id="btn-twitter-menu" class="btn_social_menu active" data="yes">
+            <div class="input_cont">
+                <input id="facebook_input" class="inputs_url" type="text">
+                <div data="facebook" class="btn_url">Ajouter</div>
+            </div>
+        </div>
+        <div class="itemMargin">
+            <div id="btn-twitter-menu" class="btn_social_menu active" data="yes" data-name="twitter">
                 <i class="fa fa-twitter" ></i>
             </div>
-            <div id="btn-gplus-menu" class="btn_social_menu active" data="yes">
+            <div class="input_cont">
+                <input id="twitter_input" class="inputs_url" type="text">
+                <div data="twitter" class="btn_url">Ajouter</div>
+            </div>
+        </div>
+            <div id="btn-gplus-menu" class="btn_social_menu active" data="yes" data-name="gplus">
                 <i class="fa fa-google" ></i>
             </div>
-            <div id="btn-linkedin-menu" class="btn_social_menu" data="no">
+            <div class="input_cont">
+                <input id="gplus_input" class="inputs_url" type="text">
+                <div data="gplus" class="btn_url">Ajouter</div>
+            </div>
+        <div class="itemMargin">
+            <div id="btn-linkedin-menu" class="btn_social_menu" data="no" data-name="linkedin">
                 <i class="fa fa-linkedin" ></i>
             </div>
-            <div id="btn-github-menu" class="btn_social_menu" data="no">
+            <div class="input_cont diNone">
+                <input id="linkedin_input" class="inputs_url" type="text">
+                <div data="linkedin" class="btn_url">Ajouter</div>
+            </div>
+        </div>
+        <div class="itemMargin">
+            <div id="btn-github-menu" class="btn_social_menu" data="no" data-name="github">
                 <i class="fa fa-github" ></i>
+            </div>
+            <div class="input_cont diNone">
+                <input id="github_input" class="inputs_url" type="text">
+                <div data="github" class="btn_url">Ajouter</div>
             </div>
         </div>
 
         <div class="itemMargin">
             <div class="title_box">Animation In</div>
                 <ul>
-                    <li class="titleAniEasing">
+                    <li id="easingAniIn" class="titleAniEasing">
                         <span>easeInSine</span>
                         <ul id="aniIn" class="aniMenu" ></ul>
                     </li>
@@ -43,7 +70,7 @@
         <div class="itemMargin">
             <div class="title_box">Animation Out</div>
                 <ul>
-                    <li class="titleAniEasing">
+                    <li id="easingAniOut" class="titleAniEasing">
                         <span>easeOutSine</span>
                         <ul id="aniOut" class="aniMenu" ></ul>
                     </li>

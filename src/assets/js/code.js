@@ -45,8 +45,8 @@
             console.log(code);
             for (var prop in code) {
                 if(code.hasOwnProperty(prop)) {
-                    if(prop == "container") {
-                        code[prop] = undefined;
+                    if(prop == "#container") {
+                        code[prop] == undefined;
                         console.log(prop);
                     }
                     if(code[prop] !== undefined) {
@@ -78,11 +78,15 @@
             console.log(code);
             for (var prop in code) {
                 if(code.hasOwnProperty(prop)) {
+                    if(code[prop] == "no") {
+                        code[prop] = undefined;
+                    }
 
                     if(code[prop] !== undefined) {
                         var props = '"' +prop+ '": "'+ code[prop]+'"';
                         result.push(props);
                     }
+
                 }
             }
 

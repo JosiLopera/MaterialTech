@@ -236,6 +236,8 @@
                 var val = $(this).attr('data');
                 self.setModal.layout = val;
 
+                self.closeAni();
+
                 $("#thirdAni").fadeIn('fast');
                 $("#background").val(self[val].finalBackground);
                 $("#closeColor").val(self[val].closeColor);
@@ -251,7 +253,11 @@
                 $(".modal").mt_modal(self.setModal);
                 console.log(self.setModal);
 
-                self.closeAni();
+                if(val == "center"){
+                    $("#thirdAni").animate({'opacity': 1}, 200);
+                }else{
+                    $("#thirdAni").animate({'opacity': 0}, 200);
+                }
 
 
                 var code = self.setModal;

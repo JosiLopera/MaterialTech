@@ -8,6 +8,7 @@
             this.aniBody();
             this.pages();
             this.hover();
+            this.effectsNav();
 
         },
 
@@ -111,6 +112,13 @@
                 $("html, body, #container").animate({scrollTop: offset}, 'slow');
                 return false;
             });
+        },
+
+        effectsNav: function(){
+            $(".btn_nav_effects").on('click', function () {
+                $(".btn_nav_effects").removeClass('eAct');
+                $(this).addClass('eAct');
+            })
         }
 
 

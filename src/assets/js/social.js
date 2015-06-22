@@ -19,7 +19,7 @@
         ],
 
         top: {
-            "animationIn": 'easeInElastic',
+            "animationIn": 'easeInBack',
             "animationOut": 'easeOutElastic',
             "layout": "top",
             "fontSize": undefined,
@@ -124,6 +124,8 @@
         elemWidth: null,
         elemHeight: null,
         i_dom: "",
+        expression: /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi,
+
 
         init: function(){
 
@@ -133,6 +135,7 @@
             this.setBackground();
             this.setButton();
             this.showCode();
+            this.setInputs();
         },
 
         ui: function() {
@@ -225,50 +228,18 @@
                     }
                 };
 
-                if(val == "bottom"){
-                    $(".social").off();
-                    $("#ani").prev("span").html(self.bottom.animation);
-                    $("#speedIn").val(self.bottom.speedIn);
-                    $("#speedSetIn").html(self.bottom.speedIn);
-                    $("#speedOut").val(self.bottom.speedOut);
-                    $("#speedSetOut").html(self.bottom.speedOut);
-                    $("#background").addClass('active').attr('data', 'yes').html('Yes');
-                    $(".social").mt_social(self.setSocial);
-                    console.log(self.setSocial);
-                }else if(val == "right"){
-                    $(".social").off();
-                    $("#ani").prev("span").html(self.right.animation);
-                    $("#speedIn").val(self.right.speedIn);
-                    $("#speedSetIn").html(self.right.speedIn);
-                    $("#speedOut").val(self.right.speedOut);
-                    $("#speedSetOut").html(self.right.speedOut);
-                    $("#background").removeClass('active').attr('data', 'no').html('No');
-                    $(".social").mt_social(self.setSocial);
-                    console.log(self.setSocial);
+                $(".social").off();
+                $("#ani").prev("span").html(self[val].animation);
+                $("#easingAniIn span").html(self[val].animationIn);
+                $("#speedIn").val(self[val].speedIn);
+                $("#speedSetIn").html(self[val].speedIn);
+                $("#easingAniOut span").html(self[val].animationOut);
+                $("#speedOut").val(self[val].speedOut);
+                $("#speedSetOut").html(self[val].speedOut);
+                $("#background").addClass('active').attr('data', 'yes').html('Yes');
+                $(".social").mt_social(self.setSocial);
+                console.log(self.setSocial);
 
-                }else if(val == "top"){
-                    $(".social").off();
-                    $("#ani").prev("span").html(self.top.animation);
-                    $("#speedIn").val(self.top.speedIn);
-                    $("#speedSetIn").html(self.top.speedIn);
-                    $("#speedOut").val(self.top.speedOut);
-                    $("#speedSetOut").html(self.top.speedOut);
-                    $("#background").removeClass('active').attr('data', 'no').html('No');
-                    $(".social").mt_social(self.setSocial);
-                    console.log(self.setSocial);
-
-                }else if(val == "left"){
-                    $(".social").off();
-                    $("#ani").prev("span").html(self.left.animation);
-                    $("#speedIn").val(self.left.speedIn);
-                    $("#speedSetIn").html(self.left.speedIn);
-                    $("#speedOut").val(self.left.speedOut);
-                    $("#speedSetOut").html(self.left.speedOut);
-                    $("#background").addClass('active').attr('data', 'yes').html('Yes');
-                    $(".social").mt_social(self.setSocial);
-                    console.log(self.setSocial);
-
-                };
             });
         },
 
@@ -350,46 +321,88 @@
         setButton: function(){
             $(".btn_social_menu").on('click', function(){
                 var val = $(this).attr('data'),
+                    valName = $(this).attr('data-name'),
+                    diNone = $(this).next(),
+                    iChild = $(this).next().children(".inputs_url"),
+                    bChild = $(this).next().children(".btn_url"),
                     tId = $(this).attr('id');
 
                 $(".social").off();
                 self.closeAni();
 
-                if($(this).attr('data') == 'no'){
+                if(val == 'no'){
                     $(this).addClass('active').attr('data', 'yes');
-                    if(tId == "btn-facebook-menu"){
-                        self.setSocial.facebook = "yes"
-                    }else if(tId == "btn-twitter-menu"){
-                        self.setSocial.twitter = "yes"
-                    }else if(tId == "btn-gplus-menu"){
-                        self.setSocial.gplus = "yes"
-                    }else if(tId == "btn-linkedin-menu"){
-                        self.setSocial.linkedin = "yes"
-                    }else if(tId == "btn-github-menu"){
-                        self.setSocial.github = "yes"
-                    }
+                    self.setSocial[valName] = "yes";
+                    $(diNone).removeClass('diNone');
 
                 }else{
                     $(this).removeClass('active').attr('data', 'no');
-                    if(tId == "btn-facebook-menu"){
-                        self.setSocial.facebook = "no"
-                    }else if(tId == "btn-twitter-menu"){
-                        self.setSocial.twitter = "no"
-                    }else if(tId == "btn-gplus-menu"){
-                        self.setSocial.gplus = "no"
-                    }else if(tId == "btn-linkedin-menu"){
-                        self.setSocial.linkedin = "no"
-                    }else if(tId == "btn-github-menu"){
-                        self.setSocial.github = "no"
-                    }
+                    self.setSocial[valName] = "no";
+                    $(diNone).addClass('diNone');
+                    $(iChild).val('');
+                    $(bChild).removeClass('active');
                 }
 
+                $(".social").mt_social(self.setSocial);
+
+
+            });
+        },
+
+        setInputs: function(){
+
+            $(".btn_url").on('click', function () {
+                var val = $(this).prev().val(),
+                    btn_p = $(this).parent().prev().attr('data-name'),
+                    fData = btn_p+"_link",
+                    regex = new RegExp(self.expression),
+                    that = $(this);
+
+                $(".social").off();
+                self.closeAni();
+
+                if (val.match(regex) ) {
+                    $(this).addClass('active');
+                    self.setSocial[fData] = val;
+                    md.code.getCodeSocial();
+                    $("#showCodebox").html(md.code.textSocial);
+                } else {
+                    $(this).css({'background-color': 'red'});
+                    setTimeout(function(){
+                        $(that).css({'background-color': '#494e59'});
+                    }, 200);
+                    setTimeout(function(){
+                        $(that).css({'background-color': 'red'});
+                    }, 400);
+                    setTimeout(function(){
+                        $(that).css({'background-color': '#494e59'});
+                    }, 600);
+                    setTimeout(function(){
+                        $(that).attr('style', '');
+                    }, 700)
+                }
 
                 $(".social").mt_social(self.setSocial);
-                console.log(tId);
+
                 console.log(self.setSocial);
 
             });
+
+            $(".inputs_url").change(function () {
+                var val = $(this).val(),
+                    t_next = $(this).next();
+                    regex = new RegExp(self.expression);
+
+                if (!val.match(regex) ) {
+                    $(t_next).removeClass('active');
+                } else {
+                    console.log(val);
+
+                }
+
+
+            });
+
         },
 
         showCode: function(){
